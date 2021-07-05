@@ -51,7 +51,7 @@ body {
 .gallery {
   display: flex;
   padding-right: calc(50vw - 7.5vmax - 1rem);
-  padding-left: calc(10vw - 7.5vmax - 1rem);
+  /* padding-left: calc(10vw - 7.5vmax - 1rem); */
   align-items: center;
 }
 
@@ -198,15 +198,15 @@ body {
 }
 
 .prodhaus-image {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .prodhaus-wallpaper-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
-  width: 75vw;
+  height: 100vh;
+  width: 100vw;
   /* margin-right: 10vw; */
 }
 
