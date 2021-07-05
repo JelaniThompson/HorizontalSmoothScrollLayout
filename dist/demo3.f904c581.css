@@ -1,6 +1,6 @@
 body {
   --color-text: #fff;
-  --color-bg: #000;
+  --color-bg: #707070;
   --color-link: #828da1;
   --color-link-hover: #cc0000;
   --color-gallery-title: #d9d0be;
@@ -51,12 +51,13 @@ body {
 .gallery {
   display: flex;
   padding-right: calc(50vw - 7.5vmax - 1rem);
-  padding-left: calc(50vw - 7.5vmax - 1rem);
+  padding-left: calc(10vw - 7.5vmax - 1rem);
   align-items: center;
 }
 
 .gallery__item {
-  margin: 0;
+  /* margin: 0; */
+  margin-right: 30px;
   display: grid;
   grid-template-areas:
     "... ..."
@@ -76,6 +77,10 @@ body {
   will-change: transform;
   cursor: pointer;
   z-index: 1; /* was 2 */
+}
+
+.darkened {
+  filter: brightness(50%);
 }
 
 .gallery__item-imginner {
@@ -102,8 +107,9 @@ body {
 
 .gallery__item-number {
   grid-area: gallery-number;
-  font-size: 10vw;
-  justify-self: center;
+  font-size: 5em;
+  justify-self: flex-start;
+  margin-left: 30px;
   color: var(--color-gallery-number);
   cursor: pointer;
   color: transparent;
@@ -191,6 +197,19 @@ body {
   display: block;
 }
 
+.prodhaus-image {
+  object-fit: contain;
+}
+
+.prodhaus-wallpaper-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  width: 75vw;
+  /* margin-right: 10vw; */
+}
+
 .youtube-container {
   display: flex;
   align-items: center;
@@ -207,6 +226,17 @@ body {
   color: #ffffff;
   font-size: 4em;
   font-family: "Pier Bold";
+}
+
+.cursor {
+  display: none;
+}
+
+.movie-link {
+  position: absolute;
+  height: 500px;
+  width: 250px;
+  z-index: 99;
 }
 
 @media screen and (min-width: 53em) {
