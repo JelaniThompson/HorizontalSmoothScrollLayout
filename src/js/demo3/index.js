@@ -34,3 +34,19 @@ Promise.all([preloadImages('.gallery__item-imginner'), preloadFonts('vxy2fer')])
         link.addEventListener('mouseleave', () => cursor.leave());
     });
 });
+
+/* 
+    See if interacting with first or last item
+    Trigger boolean for checking if at start or end
+    in order to enable vertical scroll
+*/
+let target = document.querySelector('.gallery');
+let observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            console.log("we're intersecting");
+        }
+    });
+});
+
+observer.observe(target);

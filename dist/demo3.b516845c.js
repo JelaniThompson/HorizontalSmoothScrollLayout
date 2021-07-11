@@ -9568,6 +9568,21 @@ Promise.all([(0, _utils.preloadImages)('.gallery__item-imginner'), (0, _utils.pr
     });
   });
 });
+/* 
+    See if interacting with first or last item
+    Trigger boolean for checking if at start or end
+    in order to enable vertical scroll
+*/
+
+var target = document.querySelector('.gallery');
+var observer = new IntersectionObserver(function (entries, observer) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      console.log("we're intersecting");
+    }
+  });
+});
+observer.observe(target);
 },{"../utils":"js/utils.js","../cursor":"js/cursor.js","locomotive-scroll":"../node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -9596,7 +9611,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62208" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50974" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

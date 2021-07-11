@@ -79,6 +79,10 @@ body {
   z-index: 1; /* was 2 */
 }
 
+.has-scroll-smooth body {
+  overflow: scroll !important;
+}
+
 .darkened {
   filter: brightness(50%);
 }
