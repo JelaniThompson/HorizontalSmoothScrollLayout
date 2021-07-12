@@ -48,10 +48,14 @@ let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
             verticalScrollDisabled = !verticalScrollDisabled;
+
             if (verticalScrollDisabled = true) {
                 scrollBody.classList.add('stop-scrolling');
                 console.log('toggle scroll enable class');
                 document.body.style.overflow = "hidden";
+            } else {
+                scrollBody.classList.remove('stop-scrolling');
+                document.body.style.overflow = "scroll";
             }
         }
     });

@@ -9586,6 +9586,9 @@ var observer = new IntersectionObserver(function (entries, observer) {
         scrollBody.classList.add('stop-scrolling');
         console.log('toggle scroll enable class');
         document.body.style.overflow = "hidden";
+      } else {
+        scrollBody.classList.remove('stop-scrolling');
+        document.body.style.overflow = "scroll";
       }
     }
   });
