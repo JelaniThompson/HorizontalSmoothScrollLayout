@@ -9582,11 +9582,12 @@ var observer = new IntersectionObserver(function (entries, observer) {
     if (entry.isIntersecting) {
       verticalScrollDisabled = !verticalScrollDisabled;
 
-      if (verticalScrollDisabled = true) {
+      if (verticalScrollDisabled == true) {
         scrollBody.classList.add('stop-scrolling');
         console.log('toggle scroll enable class');
         document.body.style.overflow = "hidden";
       } else {
+        console.log('back at the beginning');
         scrollBody.classList.remove('stop-scrolling');
         document.body.style.overflow = "scroll";
       }
