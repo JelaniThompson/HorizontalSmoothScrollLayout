@@ -105,8 +105,11 @@ a:focus {
   text-stroke: 1px #fff;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
+  color: #fff !important;
   /* text-stroke: 2.5px #fff; */
   color: var(--color-gallery-number);
+
+  letter-spacing: 3px !important;
 }
 
 .frame__links a:not(:last-child) {

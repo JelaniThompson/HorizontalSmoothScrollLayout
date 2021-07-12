@@ -117,8 +117,8 @@ body {
   color: var(--color-gallery-number);
   cursor: pointer;
   color: transparent;
-  -webkit-text-stroke: 2.5px #fff;
-  text-stroke: 2.5px #fff;
+  -webkit-text-stroke: 1px #fff;
+  text-stroke: 1px #fff;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   margin-top: 90px;
