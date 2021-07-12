@@ -40,11 +40,19 @@ Promise.all([preloadImages('.gallery__item-imginner'), preloadFonts('vxy2fer')])
     Trigger boolean for checking if at start or end
     in order to enable vertical scroll
 */
-let target = document.querySelector('.gallery');
+let target = document.querySelector('.first-movie-link');
+let scrollBody = document.querySelector('.gallery');
+let verticalScrollDisabled = false;
+
 let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
-            console.log("we're intersecting");
+            verticalScrollDisabled = !verticalScrollDisabled;
+            if (verticalScrollDisabled = true) {
+                scrollBody.classList.add('stop-scrolling');
+                console.log('toggle scroll enable class');
+                document.body.style.overflow = "hidden";
+            }
         }
     });
 });

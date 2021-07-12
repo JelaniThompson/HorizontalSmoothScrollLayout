@@ -9574,11 +9574,19 @@ Promise.all([(0, _utils.preloadImages)('.gallery__item-imginner'), (0, _utils.pr
     in order to enable vertical scroll
 */
 
-var target = document.querySelector('.gallery');
+var target = document.querySelector('.first-movie-link');
+var scrollBody = document.querySelector('.gallery');
+var verticalScrollDisabled = false;
 var observer = new IntersectionObserver(function (entries, observer) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
-      console.log("we're intersecting");
+      verticalScrollDisabled = !verticalScrollDisabled;
+
+      if (verticalScrollDisabled = true) {
+        scrollBody.classList.add('stop-scrolling');
+        console.log('toggle scroll enable class');
+        document.body.style.overflow = "hidden";
+      }
     }
   });
 });
