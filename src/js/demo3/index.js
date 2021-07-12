@@ -44,6 +44,10 @@ let target = document.querySelector('.first-movie-link');
 let scrollBody = document.querySelector('.gallery');
 let verticalScrollDisabled = false;
 
+let options = {
+    threshold: 1.0
+}
+
 let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
@@ -60,6 +64,6 @@ let observer = new IntersectionObserver((entries, observer) => {
             }
         }
     });
-}, );
+}, options);
 
 observer.observe(target);

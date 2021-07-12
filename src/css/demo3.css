@@ -51,7 +51,7 @@ body {
 .gallery {
   display: flex;
   padding-right: calc(50vw - 7.5vmax - 1rem);
-  /* padding-left: calc(10vw - 7.5vmax - 1rem); */
+  padding-left: calc(15vw - 7.5vmax - 1rem);
   align-items: center;
 }
 

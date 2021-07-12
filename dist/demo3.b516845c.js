@@ -9577,6 +9577,9 @@ Promise.all([(0, _utils.preloadImages)('.gallery__item-imginner'), (0, _utils.pr
 var target = document.querySelector('.first-movie-link');
 var scrollBody = document.querySelector('.gallery');
 var verticalScrollDisabled = false;
+var options = {
+  threshold: 1.0
+};
 var observer = new IntersectionObserver(function (entries, observer) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
@@ -9593,7 +9596,7 @@ var observer = new IntersectionObserver(function (entries, observer) {
       }
     }
   });
-});
+}, options);
 observer.observe(target);
 },{"../utils":"js/utils.js","../cursor":"js/cursor.js","locomotive-scroll":"../node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
