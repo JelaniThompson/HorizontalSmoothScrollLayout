@@ -119,7 +119,6 @@ body {
   color: transparent;
   -webkit-text-stroke: 2.5px #fff;
   text-stroke: 2.5px #fff;
-  /* mix-blend-mode: difference; */
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   margin-top: 90px;
