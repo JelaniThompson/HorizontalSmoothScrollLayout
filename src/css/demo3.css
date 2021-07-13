@@ -221,6 +221,37 @@ body {
   width: 100vw;
 }
 
+.recent-work-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  height: 100vh;
+  width: 100vw;
+}
+
+.recent-work-text {
+  font-family: "Pier Bold";
+  font-size: 10em;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110px;
+  letter-spacing: 0em;
+  text-align: left;
+  word-break: break-word;
+  display: inline-block;
+}
+
+/* .recent-work-container > h1 {
+  font-family: "Pier Bold";
+  font-size: 10em;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160px;
+  letter-spacing: 0em;
+  text-align: left;
+} */
+
 .reel-item-container {
   align-self: flex-end;
 }
