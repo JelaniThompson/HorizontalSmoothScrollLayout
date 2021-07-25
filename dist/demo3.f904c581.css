@@ -83,6 +83,10 @@ body {
   overflow: scroll;
 }
 
+.content-slider-container {
+  overflow: hidden;
+}
+
 .darkened {
   filter: brightness(50%);
 }
