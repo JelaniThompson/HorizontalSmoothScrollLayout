@@ -10,7 +10,15 @@
 	<link rel="stylesheet" type="text/css" href="/base.98fd6c19.css">
 	<link rel="stylesheet" type="text/css" href="/demo3.f904c581.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-	<!-- <script>document.documentElement.className = "js"; var supportsCssVars = function () { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e }; supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script> -->
+	<script>document.documentElement.className = "js";
+
+var supportsCssVars = function supportsCssVars() {
+  var e,
+      t = document.createElement("style");
+  return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e;
+};
+
+supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
 <script src="/demo3.f904c581.js"></script><script src="/slider.js"></script></head>
 
 <!-- Wallpaper Container -->
@@ -20,7 +28,7 @@
 
 <!-- YouTube Container -->
 <div class="featured-container" id="container-one">
-	<iframe src="https://player.vimeo.com/video/481451508" width="50%" height="70%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+	<iframe src="https://player.vimeo.com/video/481451508" width="50%" height="70%" frameborder="0" allowfullscreen=""></iframe>
 	<h1 class="header-text">2021<br>Reel</h1>
 </div>
 

@@ -294,6 +294,17 @@ body {
   z-index: 99;
 }
 
+#container-one {
+  opacity: 0;
+  transform: translate(-200px);
+  transition: opacity 0.5s, transform 1s;
+}
+
+.container-unhide {
+  opacity: 1 !important;
+  transform: translate(0px) !important;
+}
+
 @media screen and (min-width: 53em) {
   .frame {
     grid-template-areas:

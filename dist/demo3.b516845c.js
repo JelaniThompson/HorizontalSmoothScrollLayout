@@ -9534,24 +9534,41 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-var lscroll = new _locomotiveScroll.default({
-  el: document.querySelector('[data-scroll-container]'),
-  smooth: true,
-  direction: 'horizontal'
-}); // let's scale the images when scrolling.
-
-lscroll.on('scroll', function (obj) {
-  for (var _i = 0, _Object$keys = Object.keys(obj.currentElements); _i < _Object$keys.length; _i++) {
-    var key = _Object$keys[_i];
-
-    if (obj.currentElements[key].el.classList.contains('gallery__item-imginner')) {
-      var progress = obj.currentElements[key].progress;
-      var scaleVal = progress < 0.5 ? (0, _utils.clamp)((0, _utils.map)(progress, 0, 0.5, 0.2, 1), 0.2, 1) : (0, _utils.clamp)((0, _utils.map)(progress, 0.5, 1, 1, 0.2), 0.2, 1);
-      obj.currentElements[key].el.parentNode.style.transform = "scale(".concat(scaleVal, ")");
-    }
-  }
-});
-lscroll.update(); // Preload images and fonts
+var options = {
+  // root: document.querySelector("#container-one"),
+  rootMargin: '0px',
+  threshold: 0.5
+};
+setTimeout(function () {
+  var containerOneTarget = document.querySelector("#container-one");
+  var observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        console.log('intersecting');
+        containerOneTarget.classList.add('container-unhide');
+      }
+    });
+  }, options);
+  observer.observe(containerOneTarget);
+}, 1000); // let observer = new IntersectionObserver(callback, options)
+// observer.observe(options.root);
+// const lscroll = new LocomotiveScroll({
+//     el: document.querySelector('[data-scroll-container]'),
+//     smooth: true,
+//     direction: 'horizontal'
+// });
+// let's scale the images when scrolling.
+// lscroll.on('scroll', (obj) => {
+//     for (const key of Object.keys(obj.currentElements)) {
+//         if ( obj.currentElements[key].el.classList.contains('gallery__item-imginner') ) {
+//             let progress = obj.currentElements[key].progress;
+//             const scaleVal = progress < 0.5 ? clamp(map(progress,0,0.5,0.2,1),0.2,1) : clamp(map(progress,0.5,1,1,0.2),0.2,1);
+//             obj.currentElements[key].el.parentNode.style.transform = `scale(${scaleVal})`
+//         }
+//     }
+// });
+// lscroll.update();
+// Preload images and fonts
 
 Promise.all([(0, _utils.preloadImages)('.gallery__item-imginner'), (0, _utils.preloadFonts)('vxy2fer')]).then(function () {
   // Remove loader (loading class)
@@ -9573,31 +9590,6 @@ Promise.all([(0, _utils.preloadImages)('.gallery__item-imginner'), (0, _utils.pr
     Trigger boolean for checking if at start or end
     in order to enable vertical scroll
 */
-
-var target = document.querySelector('.first-movie-link');
-var scrollBody = document.querySelector('.gallery');
-var verticalScrollDisabled = false;
-var options = {
-  threshold: 1.0
-};
-var observer = new IntersectionObserver(function (entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      verticalScrollDisabled = !verticalScrollDisabled;
-
-      if (verticalScrollDisabled == true) {
-        scrollBody.classList.add('stop-scrolling');
-        console.log('toggle scroll enable class');
-        document.body.style.overflow = "hidden";
-      } else {
-        console.log('back at the beginning');
-        scrollBody.classList.remove('stop-scrolling');
-        document.body.style.overflow = "scroll";
-      }
-    }
-  });
-}, options);
-observer.observe(target);
 },{"../utils":"js/utils.js","../cursor":"js/cursor.js","locomotive-scroll":"../node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -9626,7 +9618,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50436" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50172" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

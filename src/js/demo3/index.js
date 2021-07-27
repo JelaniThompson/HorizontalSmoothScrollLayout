@@ -2,23 +2,46 @@ import {preloadImages, preloadFonts, clamp, map} from '../utils';
 import Cursor from '../cursor';
 import LocomotiveScroll from 'locomotive-scroll';
 
-const lscroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true,
-    direction: 'horizontal'
-});
+let options = {
+    // root: document.querySelector("#container-one"),
+    rootMargin: '0px',
+    threshold: 0.5
+}
+
+setTimeout(() => {
+    let containerOneTarget = document.querySelector("#container-one");
+
+    let observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                console.log('intersecting');
+                containerOneTarget.classList.add('container-unhide');
+            }
+        });
+    }, options);
+    observer.observe(containerOneTarget);
+}, 1000);
+
+// let observer = new IntersectionObserver(callback, options)
+// observer.observe(options.root);
+
+// const lscroll = new LocomotiveScroll({
+//     el: document.querySelector('[data-scroll-container]'),
+//     smooth: true,
+//     direction: 'horizontal'
+// });
 
 // let's scale the images when scrolling.
-lscroll.on('scroll', (obj) => {
-    for (const key of Object.keys(obj.currentElements)) {
-        if ( obj.currentElements[key].el.classList.contains('gallery__item-imginner') ) {
-            let progress = obj.currentElements[key].progress;
-            const scaleVal = progress < 0.5 ? clamp(map(progress,0,0.5,0.2,1),0.2,1) : clamp(map(progress,0.5,1,1,0.2),0.2,1);
-            obj.currentElements[key].el.parentNode.style.transform = `scale(${scaleVal})`
-        }
-    }
-});
-lscroll.update();
+// lscroll.on('scroll', (obj) => {
+//     for (const key of Object.keys(obj.currentElements)) {
+//         if ( obj.currentElements[key].el.classList.contains('gallery__item-imginner') ) {
+//             let progress = obj.currentElements[key].progress;
+//             const scaleVal = progress < 0.5 ? clamp(map(progress,0,0.5,0.2,1),0.2,1) : clamp(map(progress,0.5,1,1,0.2),0.2,1);
+//             obj.currentElements[key].el.parentNode.style.transform = `scale(${scaleVal})`
+//         }
+//     }
+// });
+// lscroll.update();
 
 // Preload images and fonts
 Promise.all([preloadImages('.gallery__item-imginner'), preloadFonts('vxy2fer')]).then(() => {
@@ -40,30 +63,3 @@ Promise.all([preloadImages('.gallery__item-imginner'), preloadFonts('vxy2fer')])
     Trigger boolean for checking if at start or end
     in order to enable vertical scroll
 */
-let target = document.querySelector('.first-movie-link');
-let scrollBody = document.querySelector('.gallery');
-let verticalScrollDisabled = false;
-
-let options = {
-    threshold: 1.0
-}
-
-let observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting) {
-            verticalScrollDisabled = !verticalScrollDisabled;
-
-            if (verticalScrollDisabled == true) {
-                scrollBody.classList.add('stop-scrolling');
-                console.log('toggle scroll enable class');
-                document.body.style.overflow = "hidden";
-            } else {
-                console.log('back at the beginning')
-                scrollBody.classList.remove('stop-scrolling');
-                document.body.style.overflow = "scroll";
-            }
-        }
-    });
-}, options);
-
-observer.observe(target);
