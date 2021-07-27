@@ -300,6 +300,18 @@ body {
   transition: opacity 0.5s, transform 1s;
 }
 
+#container-two {
+  opacity: 0;
+  transform: translate(200px);
+  transition: opacity 0.5s, transform 1s;
+}
+
+#container-three {
+  opacity: 0;
+  transform: translate(-200px);
+  transition: opacity 0.5s, transform 1s;
+}
+
 .container-unhide {
   opacity: 1 !important;
   transform: translate(0px) !important;

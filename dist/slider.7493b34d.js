@@ -9511,7 +9511,7 @@ var Native = /*#__PURE__*/function () {
 exports.Native = Native;
 var _default2 = Smooth;
 exports.default = _default2;
-},{}],"js/demo2/index.js":[function(require,module,exports) {
+},{}],"js/demo3/slider.js":[function(require,module,exports) {
 "use strict";
 
 var _utils = require("../utils");
@@ -9538,25 +9538,17 @@ var lscroll = new _locomotiveScroll.default({
   el: document.querySelector('[data-scroll-container]'),
   smooth: true,
   direction: 'horizontal'
-}); // let's skew the images when scrolling. The faster we scroll the higher the skew value
-// skew interval from -15 to 15
-// "fast scrolling" means the distance from the previous scrolling position to the current one is high. We consider a interval of [-50,50] for the min/max distance
-
-var scroll = {
-  cache: 0,
-  current: 0
-};
-
-var allImgs = _toConsumableArray(document.querySelectorAll('.gallery__item-img'));
-
+});
 lscroll.on('scroll', function (obj) {
-  scroll.current = obj.scroll.x;
-  var distance = scroll.current - scroll.cache;
-  scroll.cache = scroll.current;
-  var skewVal = (0, _utils.map)(distance, -50, 50, -15, 15);
-  allImgs.forEach(function (el) {
-    return el.style.transform = 'skewX(' + (0, _utils.clamp)(skewVal, -15, 15) + 'deg)';
-  });
+  for (var _i = 0, _Object$keys = Object.keys(obj.currentElements); _i < _Object$keys.length; _i++) {
+    var key = _Object$keys[_i];
+
+    if (obj.currentElements[key].el.classList.contains('gallery__item-imginner')) {
+      var progress = obj.currentElements[key].progress;
+      var scaleVal = progress < 0.5 ? (0, _utils.clamp)((0, _utils.map)(progress, 0, 0.5, 0.2, 1), 0.2, 1) : (0, _utils.clamp)((0, _utils.map)(progress, 0.5, 1, 1, 0.2), 0.2, 1);
+      obj.currentElements[key].el.parentNode.style.transform = "scale(".concat(scaleVal, ")");
+    }
+  }
 });
 lscroll.update(); // Preload images and fonts
 
@@ -9566,7 +9558,7 @@ Promise.all([(0, _utils.preloadImages)('.gallery__item-imginner'), (0, _utils.pr
 
   var cursor = new _cursor.default(document.querySelector('.cursor')); // Mouse effects on all links and others
 
-  _toConsumableArray(document.querySelectorAll('a')).forEach(function (link) {
+  _toConsumableArray(document.querySelectorAll('a,.gallery__item-img,.gallery__item-number')).forEach(function (link) {
     link.addEventListener('mouseenter', function () {
       return cursor.enter();
     });
@@ -9575,6 +9567,7 @@ Promise.all([(0, _utils.preloadImages)('.gallery__item-imginner'), (0, _utils.pr
     });
   });
 });
+console.log('testing 123');
 },{"../utils":"js/utils.js","../cursor":"js/cursor.js","locomotive-scroll":"../node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -9779,5 +9772,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/demo2/index.js"], null)
-//# sourceMappingURL=/demo2.44794d1a.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/demo3/slider.js"], null)
+//# sourceMappingURL=/slider.7493b34d.js.map
