@@ -75,6 +75,7 @@ body {
   position: relative;
   transform-origin: 50% 100%;
   will-change: transform;
+  filter: grayscale(100%);
   cursor: pointer;
   z-index: 1; /* was 2 */
 }
