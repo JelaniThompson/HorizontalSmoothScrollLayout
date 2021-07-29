@@ -206,7 +206,10 @@ body {
 }
 
 .prodhaus-image {
-  object-fit: cover;
+  object-fit: contain;
+  width: 75%;
+  padding: 3%;
+  height: auto;
   filter: grayscale(100%);
 }
 
@@ -253,16 +256,6 @@ body {
   display: inline-block;
 }
 
-/* .recent-work-container > h1 {
-  font-family: "Pier Bold";
-  font-size: 10em;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 160px;
-  letter-spacing: 0em;
-  text-align: left;
-} */
-
 .reel-item-container {
   align-self: flex-end;
 }
@@ -274,7 +267,6 @@ body {
 }
 
 .stop-scrolling {
-  /* height: 100%; */
   overflow-y: hidden !important;
 }
 
